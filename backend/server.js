@@ -19,6 +19,13 @@ app.get("/api/login", (req, res) => {
     res.send(JSON.stringify({ "token": token }));
 });
 
+// Add an opportunity
+app.post("/api/opportunities", (req, res) => {
+    let opportunity_details = JSON.parse(req.body);
+    db.addOpportunity(db, opportunity_details);
+    res.send("Opportunity added");
+});
+
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`)
 })
