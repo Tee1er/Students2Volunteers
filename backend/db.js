@@ -68,13 +68,8 @@ function addOpportunity(db, opportunity_details) {
 }
 
 
-
-// let db = loadDatabase();
-// createTables(db);
-
-// addUser(db, { username: "test", password: "password123", email: "test.user@example.com" });
-
 module.exports = {
     loadDatabase,
-    closeDatabase
+    closeDatabase,
+    addOpportunity
 }

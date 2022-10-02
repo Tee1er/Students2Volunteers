@@ -3,11 +3,12 @@ const app = express();
 const port = 3000;
 
 const auth = require("./auth.js");
-const { loadDatabase, closeDatabase } = require("./db.js");
+const { loadDatabase, closeDatabase, addOpportunity } = require("./db.js");
 
 let db = loadDatabase();
 
 app.use(express.static("../frontend"))
+app.use(express.json());
 
 // Log in request
 app.get("/api/login", (req, res) => {
@@ -21,8 +22,9 @@ app.get("/api/login", (req, res) => {
 
 // Add an opportunity
 app.post("/api/opportunities", (req, res) => {
-    let opportunity_details = JSON.parse(req.body);
-    db.addOpportunity(db, opportunity_details);
+    console.log("Adding new opportunity")
+    console.log(req.body)
+    addOpportunity(db, req.body);
     res.send("Opportunity added");
 });
 
