@@ -17,16 +17,20 @@ app.get("/api/login", (req, res) => {
 
     // Authenticate user
     let token = auth.authenticateUser(db, username, password);
-    res.send(JSON.stringify({ "token": token }));
+    res.json({ "token": token });
 });
 
 // Add an opportunity
 app.post("/api/opportunities", (req, res) => {
     console.log("Adding new opportunity")
-    console.log(req.body)
     addOpportunity(db, req.body);
     res.send("Opportunity added");
 });
+
+app.get("/api/opportunities", (req, res) => {
+    numOpportunities = req.query.username ? req.query.username : 10;
+    res.json({ "opportunities": db.getOpportunities(db, numOpportunities) });
+})
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`)
