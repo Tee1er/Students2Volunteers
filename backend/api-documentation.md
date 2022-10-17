@@ -15,7 +15,7 @@ All requests to the API must be authenticated with a valid API key.
 
 ## Request volunteer opportunities
 
-### GET /api/volunteer-opportunities
+### GET /api/opportunities
 Will return a list of reccomended volunteer-opportunities for the user
 
 #### **Parameters**
@@ -24,4 +24,8 @@ Will return a list of reccomended volunteer-opportunities for the user
 `interest`: The interest of the volunteer opportunities to return. Default is all interests specified by the user.
 
 **Example:** `/api/volunteer-opportunities?length=5&interest=animals`
+
+## Post volunteer opportunities
+### POST /api/opportunities
+Will return a list of reccomended volunteer-opportunities for the user
 
